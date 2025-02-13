@@ -30,6 +30,7 @@ Your **decryption** program should:
 - Attempt to recover the **original English** text.  
 - Output your best guess for each line.  
 - Explain in comments or a detailed write-up **how** you arrived at your guess (e.g., letter-frequency analysis, known word matching, etc.).
+- Run in a reasonable time (seconds, minutes, not hours or days).
 
 ---
 
