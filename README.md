@@ -10,13 +10,13 @@ This lab introduces you to **basic cryptanalysis** by focusing on simple substit
 
 2. Write a **brute-force or heuristic-based decryption** program that attempts to crack an encrypted message **without** prior knowledge of the key.  
 
-3. Write two smaller programs: one that **encrypts** a plaintext message given a key, and one that **decrypts** a ciphertext message given the same key.
+3. Write two smaller programs: one that **encrypts** a plaintext message given a key, and one that **decrypts** a cipher text message given the same key.
 
-**Important**: Your solution must make an honest attempt at cryptanalysis—**hard-coding** the decrypted phrases or any attempt of falsifying your results or assignment is grounds for receivig **zero credit**.
+**Important**: Your solution must make an honest attempt at cryptanalysis—**hard-coding** the decrypted phrases or any attempt of falsifying your results or assignment is grounds for receiving **zero credit**.
 
 ---
 
-You are given the following **four** quotes, each encrypted with a **simple substitution cipher** (where each letter in the alphabet is replaced by another letter). Your job is to programatically **recover** the original text using a **brute-force** or **analytical** approach (letter frequency, dictionary lookups, etc.). You may use any programming language to accomplish the task that you feel comfortable with.
+You are given the following **four** quotes, each encrypted with a **simple substitution cipher** (where each letter in the alphabet is replaced by another letter). Your job is to programmatically **recover** the original text using a **brute-force** or **analytical** approach (letter frequency, dictionary lookups, etc.). You may use any programming language to accomplish the task that you feel comfortable with.
 
 1. FNCNJ LQNAB JANAJ CQNAP XXMJC VJPRL HXDTW XF
    
