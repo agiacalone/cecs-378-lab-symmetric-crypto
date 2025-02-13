@@ -12,7 +12,7 @@ This lab introduces you to **basic cryptanalysis** by focusing on simple substit
 
 3. Write two smaller programs: one that **encrypts** a plaintext message given a key, and one that **decrypts** a ciphertext message given the same key.
 
-**Important**: Your solution must make an honest attempt at cryptanalysis—**hard-coding** the decrypted phrases or anyis grounds for receiving **zero credit**.
+**Important**: Your solution must make an honest attempt at cryptanalysis—**hard-coding** the decrypted phrases or any attempt of falsifying your results or assignment is grounds for receivig **zero credit**.
 
 ---
 
@@ -29,7 +29,7 @@ You are given the following **four** quotes, each encrypted with a **simple subs
 Your **decryption** program should:
 - Attempt to recover the **original English** text.  
 - Output your best guess for each line.  
-- Explain in comments or a short write-up **how** you arrived at your guess (e.g., letter-frequency analysis, known word matching, etc.).
+- Explain in comments or a detailed write-up **how** you arrived at your guess (e.g., letter-frequency analysis, known word matching, etc.).
 
 ---
 
