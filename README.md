@@ -70,7 +70,7 @@ Use your **Encrypter** and **Decrypter** on the **three** quotes below. For each
 ## Submission Guidelines
 
 1. **Source Code**: Submit all scripts or files needed to run your programs.  
-   - Include a brief README (writeup) if your code requires compilation instructions.  
+   - Include a detailed README.md (writeup) if your code requires compilation instructions. You may replace this file with your own (it's okay...I have a backup copy!).
 2. **Decrypted Text**: For Part 1, submit the **original text** you recovered.  
 3. **Keys and Ciphertext**: For Part 2, provide your chosen keys, the resulting **encrypted** text, and proof of successful **decryption**.  
 4. **No Pre-Programmed Solutions**: If your code merely embeds the decrypted text or uses direct mappings that skip genuine cryptanalysis, you will receive **zero** points for the submission.  
