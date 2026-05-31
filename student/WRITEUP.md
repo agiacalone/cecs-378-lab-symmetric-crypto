@@ -43,6 +43,12 @@ won't sign their work doesn't get paid.
 - **What the one leaked bit told me, and how it cascades into full plaintext:**
 - **The real-world reckoning (POODLE / Lucky 13):**
 
+## Behind the curtain  *(optional — for the curious)*
+
+- **Read `oracle/_seed.py`: which hash turns your repo name into your
+  per-student keys and flags, and why does its one-wayness keep those flags
+  unforgeable?**
+
 ## Sources
 
 -

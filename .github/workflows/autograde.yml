@@ -1,19 +1,26 @@
 name: Autograde
-on: [push, workflow_dispatch]
 
-permissions:
-  contents: read
-  checks: write
-  actions: read
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
 
 jobs:
-  autograde:
+  grade:
+    # Skip on the dev repo and the public template — both ship student/ stubs
+    # by design, so Autograde would always be cosmetically red on them.
+    # Student forks created via GitHub Classroom have different repo names, so
+    # this guard does NOT skip there — they run Autograde normally.
+    if: >
+      github.repository != 'agiacalone/cecs-378-lab-symmetric-crypto-dev' &&
+      github.repository != 'agiacalone/cecs-378-lab-symmetric-crypto'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       PYTHONPATH: ${{ github.workspace }}
-      # SPELLBREAKER_MAIN makes the real per-student flag uncomputable
-      # locally, so a hardcoded practice flag fails grading. Set it as an
-      # org- or repo-level Actions secret (see docs/instructor-notes.md).
+      # Set SPELLBREAKER_MAIN as an org secret on the Classroom org so the real
+      # per-student flag is uncomputable locally (see docs/instructor-notes.md).
+      # Absent, grading falls back to the public practice key and still works.
       SPELLBREAKER_MAIN: ${{ secrets.SPELLBREAKER_MAIN }}
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +29,48 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run autograding
-        uses: classroom-resources/autograding-grading-action@v1
-        with:
-          autograding-config: .github/classroom/autograding.json
+
+      - name: Ward I — The Wisp (ECB detection)
+        id: ward1
+        continue-on-error: true
+        run: python tests/grade.py ward1
+
+      - name: Ward II — The Rune Golem (ECB byte-at-a-time)
+        id: ward2
+        continue-on-error: true
+        run: python tests/grade.py ward2
+
+      - name: Ward III — The Mirror Knight (CBC bit-flipping)
+        id: ward3
+        continue-on-error: true
+        run: python tests/grade.py ward3
+
+      - name: OMEGA WARD (CBC padding oracle, Ω stretch)
+        id: ward4
+        continue-on-error: true
+        run: python tests/grade.py ward4
+
+      - name: Summary + honor gate
+        if: always()
+        run: |
+          {
+            echo "## Autograde — Spellbreaker"
+            echo ""
+            echo "| Ward | Result |"
+            echo "| --- | --- |"
+            echo "| I · The Wisp          | ${{ steps.ward1.outcome }} |"
+            echo "| II · The Rune Golem   | ${{ steps.ward2.outcome }} |"
+            echo "| III · The Mirror Knight | ${{ steps.ward3.outcome }} |"
+            echo "| IV · OMEGA WARD (Ω)   | ${{ steps.ward4.outcome }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          # grade.py enforces the honor gate per ward: with a missing/wrong honor
+          # flag every ward fails, so the job below fails too. Otherwise the job
+          # passes as long as at least one ward fell (partial credit stays
+          # visible in the per-ward step outcomes above).
+          if [[ "${{ steps.ward1.outcome }}" != "success" \
+             && "${{ steps.ward2.outcome }}" != "success" \
+             && "${{ steps.ward3.outcome }}" != "success" \
+             && "${{ steps.ward4.outcome }}" != "success" ]]; then
+            echo "::error::No wards passed (check your exploits and the honor flag in student/WRITEUP.md)."
+            exit 1
+          fi

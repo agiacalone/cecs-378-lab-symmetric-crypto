@@ -1,6 +1,7 @@
-# Setup
+# Setup — sharpening your tools
 
-You need Python 3.10+ and one library.
+No Spellbreaker walks into the Vault unarmed. Yours is a short bench: Python
+3.10+ and one crypto library.
 
 ## Quick start
 
@@ -29,13 +30,13 @@ check that the wards behave:
 pytest -v
 ```
 
-## Practice vs. real mode
+## Practice wards vs. the real Vault
 
-Locally you attack a **practice** oracle: deterministic, repeatable, and its
-flag is derivable — perfect for development. When you push, CI runs your same
-exploit against the **real** oracle whose secret only exists in CI, so you
-cannot shortcut by hardcoding the practice flag. Write a real attack and it
-works in both.
+Locally you face **practice** wards: deterministic, repeatable, and their flags
+are derivable — perfect for honing an attack. When you push, the grader runs
+your same exploit against the **real** wards, whose secret lives only in the
+grading vault, so hardcoding the practice flag gets you nowhere. Write a true
+attack and it breaks both.
 
 ## Troubleshooting
 
