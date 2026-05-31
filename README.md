@@ -20,7 +20,7 @@ You are a **Spellbreaker**. The operative a resistance cell sends in once brute
 force has already failed. The Vault was never built to be forced. It was built
 to be *outsmarted*.
 
-Those wards were woven by the Company's chief enchanter, **Archmage [Sephira](https://finalfantasy.fandom.com/wiki/Sephiroth)**, 
+Those wards were woven by the Company's chief enchanter, **Archmage Sephira**, 
 a prodigy who was certain no one alive could unravel her craft. She was right
 about her own brilliance and wrong about almost everything else. She socketed
 the **same Materia** into every seal so she'd never stoop to recharging them.
@@ -42,7 +42,7 @@ shortcuts. The deeper you descend, the less they forgive.
 
 | Boss | Spell | The flaw | Difficulty |
 | --- | --- | --- | --- |
-| **I · The Wisp** | [*Sense*](https://finalfantasy.fandom.com/wiki/Sense) | ECB determinism (detection) | trivial |
+| **I · The Wisp** | [*Sense*](https://finalfantasy.fandom.com/wiki/Sense_%28Final_Fantasy_VII%29) | ECB determinism (detection) | trivial |
 | **II · The Rune Golem** | [*Fire→Firaga*](https://finalfantasy.fandom.com/wiki/Fire_%28ability%29) | ECB byte-at-a-time recovery | the real fight |
 | **III · The Mirror Knight** | *Alter* | CBC malleability (bit-flipping) | hard |
 | **IV · OMEGA WARD** | [*Ultima*](https://finalfantasy.fandom.com/wiki/Ultima_%28ability%29) | CBC padding oracle | Ω == top players only |
