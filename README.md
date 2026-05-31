@@ -42,7 +42,7 @@ cryptographic sin: a [reused key](https://en.wikipedia.org/wiki/Key_%28cryptogra
 And every one of them is a door she left ajar.
 
 > In CECS 326 you learned to *weave* a cipher. Here you learn that anything
-> woven can be **unwoven**. The fantasy element is costume; the four
+> woven can be **unwoven**. The fantasy element is cosplay; the four
 > attacks beneath it are exactly how real systems fall and exactly how real
 > organizations get owned.
 
