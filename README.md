@@ -27,12 +27,12 @@ the **same Materia** into every seal so she'd never stoop to recharging them.
 She let her **patterns show**, trusting that nobody would look closely. She
 bound a ward that will **answer any question** you put to it, never dreaming of
 a thief who would ask the right ones. Every shortcut she took is a real
-cryptographic sin — a reused key, a deterministic cipher, an oracle that leaks —
-and every one of them is a door she left ajar.
+cryptographic sin: a reused key, a deterministic cipher, an oracle that leaks.
+And every one of them is a door she left ajar.
 
 > In CECS 326 you learned to *weave* a cipher. Here you learn that anything
-> woven can be **unwoven**. While the fantasy element is a costume, the four
-> attacks beneath it are exactly how real systems fall — and exactly how real
+> woven can be **unwoven**. While the fantasy element is costume; the four
+> attacks beneath it are exactly how real systems fall and exactly how real
 > organizations get owned.
 
 ## `[--[ THE FOUR WARDS ]--]`
@@ -45,7 +45,7 @@ shortcuts. The deeper you descend, the less they forgive.
 | **I · The Wisp** | *Sense* | ECB determinism (detection) | trivial |
 | **II · The Rune Golem** | *Fire→Firaga* | ECB byte-at-a-time recovery | the real fight |
 | **III · The Mirror Knight** | *Alter* | CBC malleability (bit-flipping) | hard |
-| **IV · OMEGA WARD** | *Ultima* | CBC padding oracle | Ω — top players only |
+| **IV · OMEGA WARD** | *Ultima* | CBC padding oracle | Ω == top players only |
 
 - **The Wisp** barely counts as a guardian. Cast *Sense* and its repeating
   pattern flickers into the open.
@@ -69,7 +69,7 @@ for glory.
    Full setup (virtualenv, troubleshooting): `docs/setup.md`.
 3. The four wards live in `oracle/vault.py`. **Open it. Read it. Take it
    apart.** Studying exactly how a ward is built is the first half of breaking
-   it — that *is* cryptanalysis. Reading the lock will never hand you the key,
+   it that *is* cryptanalysis. Reading the lock will never hand you the key,
    though: each ward's flag is derived from a secret that exists only inside the
    grading vault, so the one and only way to claim a flag is to genuinely defeat
    the ward. Write your attack in `student/exploitN.py`.
@@ -107,17 +107,17 @@ autograded points.
 
 Curious how the Vault tells *your* wards from everyone else's? Open
 `oracle/_seed.py`. Every key, IV, and flag is derived with **SHA-256** from your
-repository's name — a cryptographic hash pressed into service as a
+repository's name. A cryptographic hash pressed into service as a
 *key-derivation function*. That one move buys three properties at once:
 
-- **Determinism** — the same repo always hashes to the same wards, so grading is
+- **Determinism**: the same repo always hashes to the same wards, so grading is
   repeatable.
-- **Uniqueness** — no two repositories hash alike, so your wards (and flags) are
+- **Uniqueness**: no two repositories hash alike, so your wards (and flags) are
   yours alone; a borrowed exploit recovers nothing.
-- **One-wayness** — you can't run a flag back through the hash to forge its key.
+- **One-wayness**: you can't run a flag back through the hash to forge its key.
 
 You spend this lab attacking four ways symmetric crypto goes *wrong*. The
-machinery that makes the lab fair is crypto done *right* — reused keys, ECB,
+machinery that makes the lab fair is crypto done *right*; reused keys, ECB,
 padding oracles, and now **hashing as a KDF**: applied symmetric crypto from
 both sides of the blade.
 
@@ -126,8 +126,8 @@ both sides of the blade.
 Read everything: public tutorials, the oracle source, the docs, each other's
 *ideas*. Curiosity is the whole job. What you may **not** do is submit an
 exploit you didn't write and understand. And you couldn't coast on a
-classmate's even if you tried: their wards aren't yours — the flags differ — and
-a borrowed exploit recovers nothing. Write your own. It's the only thing that
+classmate's even if you tried: their wards aren't yours the flags differ. And
+borrowed exploit recovers nothing. Write your own. It's the only thing that
 works.
 
 ```
