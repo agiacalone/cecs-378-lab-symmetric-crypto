@@ -42,7 +42,7 @@ cryptographic sin: a [reused key](https://en.wikipedia.org/wiki/Key_%28cryptogra
 And every one of them is a door she left ajar.
 
 > In CECS 326 you learned to *weave* a cipher. Here you learn that anything
-> woven can be **unwoven**. While the fantasy element is costume; the four
+> woven can be **unwoven**. The fantasy element is costume; the four
 > attacks beneath it are exactly how real systems fall and exactly how real
 > organizations get owned.
 
@@ -155,7 +155,7 @@ retelling.
 Read everything: public tutorials, the oracle source, the docs, each other's
 *ideas*. Curiosity is the whole job. What you may **not** do is submit an
 exploit you didn't write and understand. And you couldn't coast on a
-classmate's even if you tried: their wards aren't yours the flags differ. And
+classmate's even if you tried: their wards aren't yours, and the flags differ. A
 borrowed exploit recovers nothing. Write your own. It's the only thing that
 works.
 
