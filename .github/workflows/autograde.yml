@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHONPATH: ${{ github.workspace }}
-      # SPELLBREAKER_MASTER makes the real per-student flag uncomputable
+      # SPELLBREAKER_MAIN makes the real per-student flag uncomputable
       # locally, so a hardcoded practice flag fails grading. Set it as an
       # org- or repo-level Actions secret (see docs/instructor-notes.md).
-      SPELLBREAKER_MASTER: ${{ secrets.SPELLBREAKER_MASTER }}
+      SPELLBREAKER_MAIN: ${{ secrets.SPELLBREAKER_MAIN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

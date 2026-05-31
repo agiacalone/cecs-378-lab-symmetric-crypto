@@ -2,14 +2,14 @@
 
 Two derivation regimes:
 
-* **Ward secrets / flags** are salted by a MASTER key. In CI (real mode) the
-  master comes from the ``SPELLBREAKER_MASTER`` Actions secret, so the real
+* **Ward secrets / flags** are salted by a MAIN key. In CI (real mode) the
+  main comes from the ``SPELLBREAKER_MAIN`` Actions secret, so the real
   flag cannot be computed locally — the student's exploit must actually run
-  the attack against the oracle. Locally (practice mode) the master falls back
+  the attack against the oracle. Locally (practice mode) the main falls back
   to a public constant, giving a deterministic practice flag to develop
   against.
 
-* **The honor flag** derives from the repo id ONLY (no master), so the value a
+* **The honor flag** derives from the repo id ONLY (no main), so the value a
   student obtains locally via ``pledge.py`` matches what CI expects.
 
 The per-student identity is the repository ("owner/name"): ``GITHUB_REPOSITORY``
@@ -19,7 +19,7 @@ import hashlib
 import os
 import subprocess
 
-PRACTICE_MASTER = b"spellbreaker-practice-master-v1"
+PRACTICE_MAIN = b"spellbreaker-practice-main-v1"
 
 
 def repo_id():
@@ -38,19 +38,19 @@ def repo_id():
     return "local/practice"
 
 
-def _master():
-    m = os.environ.get("SPELLBREAKER_MASTER")
-    return m.encode() if m else PRACTICE_MASTER
+def _main():
+    m = os.environ.get("SPELLBREAKER_MAIN")
+    return m.encode() if m else PRACTICE_MAIN
 
 
 def is_real_mode():
-    return bool(os.environ.get("SPELLBREAKER_MASTER"))
+    return bool(os.environ.get("SPELLBREAKER_MAIN"))
 
 
-def _digest(*parts, master=True):
+def _digest(*parts, main=True):
     h = hashlib.sha256()
-    if master:
-        h.update(_master())
+    if main:
+        h.update(_main())
     h.update(repo_id().encode())
     for p in parts:
         h.update(b"|")
@@ -75,4 +75,4 @@ def ward_flag(ward):
 
 
 def honor_flag():
-    return f"CECS378{{honor_{_digest('honor', master=False).hex()[:24]}}}"
+    return f"CECS378{{honor_{_digest('honor', main=False).hex()[:24]}}}"
