@@ -27,7 +27,7 @@ the **same Materia** into every seal so she'd never stoop to recharging them.
 She let her **patterns show**, trusting that nobody would look closely. She
 bound a ward that will **answer any question** you put to it, never dreaming of
 a thief who would ask the right ones. Every shortcut she took is a real
-cryptographic sin: a reused key, a deterministic cipher, an oracle that leaks.
+cryptographic sin: a [reused key](https://en.wikipedia.org/wiki/Key_%28cryptography%29), a [deterministic cipher](https://en.wikipedia.org/wiki/Deterministic_encryption), an oracle that leaks.
 And every one of them is a door she left ajar.
 
 > In CECS 326 you learned to *weave* a cipher. Here you learn that anything
@@ -106,15 +106,16 @@ autograded points.
 ## `[--[ BEHIND THE CURTAIN ]--]`
 
 Curious how the Vault tells *your* wards from everyone else's? Open
-`oracle/_seed.py`. Every key, IV, and flag is derived with **SHA-256** from your
-repository's name. A cryptographic hash pressed into service as a
-*key-derivation function*. That one move buys three properties at once:
+`oracle/_seed.py`. Every key, [IV](https://en.wikipedia.org/wiki/Initialization_vector), and flag is derived with [**SHA-256**](https://en.wikipedia.org/wiki/SHA-2)
+from a [seed](https://en.wikipedia.org/wiki/Random_seed): your repository's name. A
+[cryptographic hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) pressed into service as a
+[*key-derivation function*](https://en.wikipedia.org/wiki/Key_derivation_function). That one move buys three properties at once:
 
-- **Determinism**: the same repo always hashes to the same wards, so grading is
+- **[Determinism](https://en.wikipedia.org/wiki/Deterministic_algorithm)**: the same repo always hashes to the same wards, so grading is
   repeatable.
 - **Uniqueness**: no two repositories hash alike, so your wards (and flags) are
   yours alone; a borrowed exploit recovers nothing.
-- **One-wayness**: you can't run a flag back through the hash to forge its key.
+- **[One-wayness](https://en.wikipedia.org/wiki/One-way_function)**: you can't run a flag back through the hash to forge its key.
 
 You spend this lab attacking four ways symmetric crypto goes *wrong*. The
 machinery that makes the lab fair is crypto done *right*; reused keys, ECB,
