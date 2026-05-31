@@ -10,8 +10,8 @@
 **The Tower drinks the world dry.**
 
 For a century the Company has sunk its wells into the planet's veins and pumped
-the raw magic up into its Tower. Bottling the lifeblood of the world as
-**Materia**, crystallized spellfire, it sells back to the very cities it has
+the raw magic up into its Tower. Bottling [the lifeblood of the world](https://finalfantasy.fandom.com/wiki/Lifestream) as
+[**Materia**](https://finalfantasy.fandom.com/wiki/Materia), crystallized spellfire, it sells back to the very cities it has
 dimmed. What the Company guards most jealously isn't gold, and isn't territory.
 It's *memory*: the ledgers, the keys, the proof of everything it has taken. All
 sealed in the **Vault** beneath the Tower, behind four arcane **wards**.
@@ -20,7 +20,7 @@ You are a **Spellbreaker**. The operative a resistance cell sends in once brute
 force has already failed. The Vault was never built to be forced. It was built
 to be *outsmarted*.
 
-Those wards were woven by the Company's chief enchanter, **Archmage Sephira**, 
+Those wards were woven by the Company's chief enchanter, **Archmage [Sephira](https://finalfantasy.fandom.com/wiki/Sephiroth)**, 
 a prodigy who was certain no one alive could unravel her craft. She was right
 about her own brilliance and wrong about almost everything else. She socketed
 the **same Materia** into every seal so she'd never stoop to recharging them.
