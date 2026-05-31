@@ -1,0 +1,28 @@
+name: Autograde
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+  checks: write
+  actions: read
+
+jobs:
+  autograde:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      # SPELLBREAKER_MASTER makes the real per-student flag uncomputable
+      # locally, so a hardcoded practice flag fails grading. Set it as an
+      # org- or repo-level Actions secret (see docs/instructor-notes.md).
+      SPELLBREAKER_MASTER: ${{ secrets.SPELLBREAKER_MASTER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run autograding
+        uses: classroom-resources/autograding-grading-action@v1
+        with:
+          autograding-config: .github/classroom/autograding.json
