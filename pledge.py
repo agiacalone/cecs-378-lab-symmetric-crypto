@@ -7,7 +7,7 @@ the wrong one), the wards you broke count for nothing.
 """
 import sys
 
-from oracle import _seed
+import honor
 
 OATH = (
     "I swear on my own craft: every exploit in this repository is mine. I read "
@@ -23,7 +23,7 @@ def main():
     sys.stdout.flush()
     typed = sys.stdin.readline().strip()
     if typed == OATH:
-        sys.stdout.write("\nThe Vault yields. Honor flag: " + _seed.honor_flag() + "\n")
+        sys.stdout.write("\nThe Vault yields. Honor flag: " + honor.honor_flag() + "\n")
         return 0
     sys.stderr.write("The words ring false. The Vault stays shut.\n")
     return 1

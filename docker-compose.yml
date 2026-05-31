@@ -1,0 +1,9 @@
+# Local practice oracle -- test mode (public test key, no token), on localhost:8000.
+# Run:  docker compose up -d     then:  export SPELLBREAKER_ORACLE=http://localhost:8000
+services:
+  oracle:
+    image: ghcr.io/agiacalone/grading-oracle:latest
+    pull_policy: always
+    ports:
+      - "8000:8000"
+    # No GRADING_KEY / GRADING_TOKEN -> the service runs in open TEST mode.

@@ -1,10 +1,12 @@
 ---
-# Paste your flags here. The autograder reads this file.
+# The autograder reads only the honor flag below. Each ward is graded by
+# running your exploit and checking its proof with the oracle, so there is no
+# ward flag to paste. The lines below are for your own record: ward II and
+# ward IV recover a CECS378 flag; ward I and ward III proofs are a duplicated
+# block and a forged token, not flags.
 honor: CECS378{honor_PASTE_FROM_pledge.py}
-ward1: CECS378{ward1_...}
 ward2: CECS378{ward2_...}
-ward3: CECS378{ward3_...}
-ward4: CECS378{ward4_...}   # optional — OMEGA WARD (Ω stretch)
+ward4: CECS378{ward4_...}   # OMEGA WARD (Ω stretch)
 ---
 
 # Grimoire of the Spellbreaker
@@ -45,9 +47,8 @@ won't sign their work doesn't get paid.
 
 ## Behind the curtain  *(optional, for the curious)*
 
-- **Read `oracle/_seed.py`: which hash turns your repo name into your
-  per-student keys and flags, and why does its one-wayness keep those flags
-  unforgeable?**
+- **Read the published oracle source: which primitives derive per-session
+  secrets, and why does their one-wayness keep those proofs unforgeable?**
 
 ## Sources
 

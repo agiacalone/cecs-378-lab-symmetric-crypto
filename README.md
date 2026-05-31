@@ -73,27 +73,31 @@ for glory.
 ## `[--[ HOW TO BEGIN ]--]`
 
 1. Accept the GitHub Classroom assignment (you're reading its repo).
-2. Set up Python and the crypto library:
+2. Set up Python and start the practice oracle:
    ```sh
    pip install -r requirements.txt
+   docker compose up -d
    ```
-   Full setup (virtualenv, troubleshooting): `docs/setup.md`.
-3. The four wards live in `oracle/vault.py`. **Open it. Read it. Take it
-   apart.** Studying exactly how a ward is built is the first half of breaking
-   it that *is* cryptanalysis. Reading the lock will never hand you the key,
-   though: each ward's flag is derived from a secret that exists only inside the
-   grading vault, so the one and only way to claim a flag is to genuinely defeat
-   the ward. Write your attack in `student/exploitN.py`.
-4. Develop locally against the **practice** oracle (deterministic). When you
-   push, the autograder re-runs your exploit against the **real** ward and
-   checks the flag you recover.
+   Full setup (virtualenv, oracle healthcheck, troubleshooting): `docs/setup.md`.
+3. The four wards are a **network service**. Your exploit calls the oracle over
+   HTTP using `from spellbreaker_oracle import Oracle`. The oracle runs the
+   crypto server-side; you probe it, observe how it responds, and use those
+   responses to recover the secret. Studying how each ward leaks, via the
+   published oracle source and the reading list below, is the first half of
+   breaking it. The one and only way to claim a proof is to genuinely run the
+   attack. Write your attack in `student/exploitN.py`.
+4. Develop locally against the **practice** oracle (test mode, no token,
+   repeatable sessions). When you push, the autograder runs your same exploit
+   against the **grading** oracle, whose secret lives only on the server. A
+   hardcoded proof from a local session fails against the grading oracle -- a
+   true attack breaks both.
 
 ## `[--[ DELIVERABLES ]--]`
 
 | Path | What goes here |
 | --- | --- |
 | `student/exploit1.py … exploit4.py` | one attack per ward (Ward IV optional) |
-| `student/WRITEUP.md` | the grimoire (template provided; flags go in frontmatter) |
+| `student/WRITEUP.md` | the grimoire (template provided; honor flag goes in frontmatter) |
 | `student/screenshots/` | a terminal shot of each flag you recovered |
 
 Comment your code. Cite at least one source in your grimoire.
@@ -116,22 +120,22 @@ autograded points.
 
 ## `[--[ BEHIND THE CURTAIN ]--]`
 
-Curious how the Vault tells *your* wards from everyone else's? Open
-`oracle/_seed.py`. Every key, [IV](https://en.wikipedia.org/wiki/Initialization_vector), and flag is derived with [**SHA-256**](https://en.wikipedia.org/wiki/SHA-2)
-from a [seed](https://en.wikipedia.org/wiki/Random_seed): your repository's name. A
-[cryptographic hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) pressed into service as a
-[*key-derivation function*](https://en.wikipedia.org/wiki/Key_derivation_function). That one move buys three properties at once:
+Curious how the Vault keeps your wards distinct from everyone else's? The
+grading oracle holds a secret key server-side. Every proof it accepts is bound
+to that key and to the specific ward you attacked. The oracle's source is
+published alongside the image you pull for local practice; read it the same way
+you'd audit a real cryptosystem. The one-way properties that protect the oracle's
+secrets are the same [key-derivation](https://en.wikipedia.org/wiki/Key_derivation_function) and [cryptographic hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) ideas you will
+study this semester.
 
-- **[Determinism](https://en.wikipedia.org/wiki/Deterministic_algorithm)**: the same repo always hashes to the same wards, so grading is
-  repeatable.
-- **Uniqueness**: no two repositories hash alike, so your wards (and flags) are
-  yours alone; a borrowed exploit recovers nothing.
-- **[One-wayness](https://en.wikipedia.org/wiki/One-way_function)**: you can't run a flag back through the hash to forge its key.
+- **[Determinism](https://en.wikipedia.org/wiki/Deterministic_algorithm)**: the oracle always accepts the same correct proof for a given
+  ward, so grading is repeatable.
+- **Uniqueness**: your proof for Ward II is not a valid proof for Ward III, and
+  a borrowed proof from someone else's session fails.
+- **[One-wayness](https://en.wikipedia.org/wiki/One-way_function)**: you can't reverse a proof to forge the oracle's key.
 
 You spend this lab attacking four ways symmetric crypto goes *wrong*. The
-machinery that makes the lab fair is crypto done *right*; reused keys, ECB,
-padding oracles, and now **hashing as a KDF**: applied symmetric crypto from
-both sides of the blade.
+machinery that makes the lab fair is crypto done *right*.
 
 ## `[--[ THE SPELLBREAKER'S LIBRARY ]--]`
 
@@ -144,7 +148,7 @@ retelling.
 - **II · The Rune Golem**: ECB byte-at-a-time · [Cryptopals 2·12](https://cryptopals.com/sets/2/challenges/12)
 - **III · The Mirror Knight**: CBC bit-flipping · [Cryptopals 2·16](https://cryptopals.com/sets/2/challenges/16)
 - **IV · OMEGA WARD**: CBC padding oracle · [Padding oracle attack](https://en.wikipedia.org/wiki/Padding_oracle_attack) · [POODLE](https://en.wikipedia.org/wiki/POODLE) / [Lucky 13](https://en.wikipedia.org/wiki/Lucky_Thirteen_attack) · [Cryptopals 3·17](https://cryptopals.com/sets/3/challenges/17)
-- **Behind the curtain**: hashing as a KDF · [Key derivation function](https://en.wikipedia.org/wiki/Key_derivation_function)
+- **Behind the curtain**: the oracle architecture · [Key derivation function](https://en.wikipedia.org/wiki/Key_derivation_function)
 
 ## `[--[ HONOR CODE ]--]`
 
