@@ -7,20 +7,38 @@
 
 # CECS 378 Lab: Spellbreaker
 
-A careless megacorp sealed its Vault with four magical **wards**, each woven
-from **Materia** — crystallized magic. Their archmage made the oldest mistakes
-in the book: he socketed the **same Materia** into every seal, left his
-**patterns showing**, and never imagined anyone would **probe** his wards.
+**The Tower drinks the world dry.**
 
-You are the **Spellbreaker**. You break in by exploiting exactly those
-blunders. In CECS 326 you learned to *cast* a cipher; here you learn to
-*unweave* one.
+For a century the Company has sunk its wells into the planet's veins and pumped
+the raw magic up into its Tower — bottling the lifeblood of the world as
+**Materia**, crystallized spellfire it sells back to the very cities it has
+dimmed. What the Company guards most jealously isn't gold, and isn't territory.
+It's *memory*: the ledgers, the keys, the proof of everything it has taken — all
+sealed in the **Vault** beneath the Tower, behind four arcane **wards**.
 
-> Every "ward" is a real symmetric-crypto flaw with a real-world body count.
-> Reused keys, ECB mode, and padding oracles are how actual companies get
-> owned. The fantasy is the wrapper; the attacks are the lesson.
+You are a **Spellbreaker** — the operative a resistance cell sends in once brute
+force has already failed. The Vault was never built to be forced. It was built
+to be *outsmarted*.
+
+Those wards were woven by the Company's chief enchanter, **Archmage Sephira** —
+a prodigy who was certain no one alive could unravel her craft. She was right
+about her own brilliance and wrong about almost everything else. She socketed
+the **same Materia** into every seal so she'd never stoop to recharging them.
+She let her **patterns show**, trusting that nobody would look closely. She
+bound a ward that will **answer any question** you put to it, never dreaming of
+a thief who would ask the right ones. Every shortcut she took is a real
+cryptographic sin — a reused key, a deterministic cipher, an oracle that leaks —
+and every one of them is a door she left ajar.
+
+> In CECS 326 you learned to *weave* a cipher. Here you learn that anything
+> woven can be **unwoven**. The fantasy is a costume; the four attacks beneath
+> it are exactly how real systems fall — and exactly how real companies get
+> owned.
 
 ## `[--[ THE FOUR WARDS ]--]`
+
+Four guardians stand between you and the Vault, each bound to one of Sephira's
+shortcuts. The deeper you descend, the less they forgive.
 
 | Boss | Spell | The flaw | Difficulty |
 | --- | --- | --- | --- |
@@ -28,6 +46,15 @@ blunders. In CECS 326 you learned to *cast* a cipher; here you learn to
 | **II · The Rune Golem** | *Fire→Firaga* | ECB byte-at-a-time recovery | the real fight |
 | **III · The Mirror Knight** | *Alter* | CBC malleability (bit-flipping) | hard |
 | **IV · OMEGA WARD** | *Ultima* | CBC padding oracle | Ω — top players only |
+
+- **The Wisp** barely counts as a guardian — cast *Sense* and its repeating
+  pattern flickers into the open.
+- **The Rune Golem** is your first true fight: pry its secret loose one rune at
+  a time until the whole word stands bare.
+- **The Mirror Knight** answers only to a sigil of passage — so forge one it
+  cannot tell from the real thing.
+- **OMEGA WARD** is Sephira's masterpiece and her worst mistake. It will confirm
+  or deny any guess you make, and that, patiently, is all you need.
 
 Wards I–III are the climb. **OMEGA WARD is an optional superboss** — clear it
 for glory.
@@ -40,8 +67,12 @@ for glory.
    pip install -r requirements.txt
    ```
    Full setup (virtualenv, troubleshooting): `docs/setup.md`.
-3. Each ward is a black box in `oracle/vault.py`. **Do not read its
-   internals** — that's the answer key. Attack it from `student/exploitN.py`.
+3. The four wards live in `oracle/vault.py`. **Open it. Read it. Take it
+   apart.** Studying exactly how a ward is built is the first half of breaking
+   it — that *is* cryptanalysis. Reading the lock will never hand you the key,
+   though: each ward's flag is derived from a secret that exists only inside the
+   grading vault, so the one and only way to claim a flag is to genuinely defeat
+   the ward. Write your attack in `student/exploitN.py`.
 4. Develop locally against the **practice** oracle (deterministic). When you
    push, the autograder re-runs your exploit against the **real** ward and
    checks the flag you recover.
@@ -74,9 +105,12 @@ autograded points.
 
 ## `[--[ HONOR CODE ]--]`
 
-You may read public tutorials on these attacks. **You will write your own
-exploit.** Your wards are not your classmate's wards — their flags differ from
-yours, so a borrowed exploit recovers nothing. Sharing is wasted typing.
+Read everything — public tutorials, the oracle source, the docs, each other's
+*ideas*. Curiosity is the whole job. What you may **not** do is submit an
+exploit you didn't write and understand. And you couldn't coast on a
+classmate's even if you tried: their wards aren't yours — the flags differ — so
+a borrowed exploit recovers nothing. Write your own. It's the only thing that
+works.
 
 ```
 [--EOF--]

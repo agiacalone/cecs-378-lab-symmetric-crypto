@@ -1,7 +1,11 @@
 """The Vault's four wards, as black-box oracles.
 
-Students import these and attack them. Do not read past this docstring if you
-want the challenge intact — the internals are the answer key.
+Import these and attack them from your exploits — and read them. Studying how
+each ward is built is the first half of breaking it. Knowing the construction
+won't hand you the flag, though: each flag is derived from a secret that lives
+only in the grading vault, so you still have to defeat the ward to claim it.
+That's Kerckhoffs's principle in miniature — the security is in the key, not in
+hiding the design.
 """
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
