@@ -1,32 +1,31 @@
 #!/usr/bin/env python3
-"""The SOLDIER's Oath — gate for the honor flag.
+"""The SOLDIER's Oath — the gate that releases your honor flag.
 
-Type the oath back verbatim to receive your honor flag, then paste it into
-``student/WRITEUP.md``. The autograder requires it; a missing or wrong honor
-flag voids your autograded points.
+Speak the oath back, word for word, and the Vault yields your honor flag. Paste
+it into ``student/WRITEUP.md``. The autograder demands it; without it (or with
+the wrong one), the wards you broke count for nothing.
 """
 import sys
 
 from oracle import _seed
 
 OATH = (
-    "I affirm that the exploits I have committed to this repository were "
-    "written by my own hand. I read, understood, and chose every line. I did "
-    "not paste code I did not understand, nor did I have another person, tool, "
-    "or model write my exploits for me."
+    "I swear on my own craft: every exploit in this repository is mine. I read "
+    "each line, I understood it, and I chose it. No other hand, no person, no "
+    "tool, no model, broke these wards for me."
 )
 
 
 def main():
     sys.stdout.write("=== The SOLDIER's Oath ===\n\n")
     sys.stdout.write(OATH + "\n\n")
-    sys.stdout.write("Type the oath back, verbatim, to receive your honor flag:\n")
+    sys.stdout.write("Speak it back, word for word, to claim your honor flag:\n")
     sys.stdout.flush()
     typed = sys.stdin.readline().strip()
     if typed == OATH:
-        sys.stdout.write("\nHonor flag: " + _seed.honor_flag() + "\n")
+        sys.stdout.write("\nThe Vault yields. Honor flag: " + _seed.honor_flag() + "\n")
         return 0
-    sys.stderr.write("pledge not affirmed\n")
+    sys.stderr.write("The words ring false. The Vault stays shut.\n")
     return 1
 
 
