@@ -11,7 +11,7 @@
 
 For a century [the Company](https://finalfantasy.fandom.com/wiki/Shinra_Electric_Power_Company) has sunk its wells into the planet's veins and pumped
 the raw magic up into its Tower. Bottling [the lifeblood of the world](https://finalfantasy.fandom.com/wiki/Lifestream) as
-[**Materia**](https://finalfantasy.fandom.com/wiki/Materia), crystallized spellfire, it sells back to the very cities it has
+[**Materia**](https://finalfantasy.fandom.com/wiki/Materia_%28Final_Fantasy_VII%29), crystallized spellfire, it sells back to the very cities it has
 dimmed. What the Company guards most jealously isn't gold, and isn't territory.
 It's *memory*: the ledgers, the keys, the proof of everything it has taken. All
 sealed in the **Vault** beneath the Tower, behind four arcane **wards**.
