@@ -44,7 +44,7 @@ shortcuts. The deeper you descend, the less they forgive.
 | --- | --- | --- | --- |
 | **I · The Wisp** | [*Sense*](https://finalfantasy.fandom.com/wiki/Sense_%28Final_Fantasy_VII%29) | ECB determinism (detection) | trivial |
 | **II · The Rune Golem** | [*Fire→Firaga*](https://finalfantasy.fandom.com/wiki/Fire_%28ability%29) | ECB byte-at-a-time recovery | the real fight |
-| **III · The Mirror Knight** | *Alter* | CBC malleability (bit-flipping) | hard |
+| **III · The Mirror Knight** | [*Manipulate*](https://finalfantasy.fandom.com/wiki/Manipulate_%28Final_Fantasy_VII%29) | CBC malleability (bit-flipping) | hard |
 | **IV · OMEGA WARD** | [*Ultima*](https://finalfantasy.fandom.com/wiki/Ultima_%28ability%29) | CBC padding oracle | Ω == top players only |
 
 - **The Wisp** barely counts as a guardian. Cast *Sense* and its repeating
