@@ -9,7 +9,7 @@ ward4: CECS378{ward4_...}   # optional — OMEGA WARD (Ω stretch)
 
 # Grimoire of the Spellbreaker
 
-> Every Spellbreaker keeps a grimoire — a record of how each ward fell, so the
+> Every Spellbreaker keeps a grimoire, a record of how each ward fell, so the
 > next break comes faster. This one is yours. Write an entry for every ward you
 > defeated: comment your exploit code, cite at least one source, and tell me
 > *how* the ward broke, not merely that it did. "I ran the attack" earns
@@ -17,7 +17,7 @@ ward4: CECS378{ward4_...}   # optional — OMEGA WARD (Ω stretch)
 
 ## The Oath
 
-Speak the SOLDIER's Oath — run `python pledge.py` — and paste the honor flag it
+Speak the SOLDIER's Oath, run `python pledge.py`, and paste the honor flag it
 yields into the frontmatter above. No honor flag, no marks: a Spellbreaker who
 won't sign their work doesn't get paid.
 
@@ -43,7 +43,7 @@ won't sign their work doesn't get paid.
 - **What the one leaked bit told me, and how it cascades into full plaintext:**
 - **The real-world reckoning (POODLE / Lucky 13):**
 
-## Behind the curtain  *(optional — for the curious)*
+## Behind the curtain  *(optional, for the curious)*
 
 - **Read `oracle/_seed.py`: which hash turns your repo name into your
   per-student keys and flags, and why does its one-wayness keep those flags

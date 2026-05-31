@@ -19,7 +19,7 @@ Always run from the repo root so `import oracle` resolves:
 python student/exploit1.py
 ```
 
-The scaffolds insert the repo root on `sys.path` for you — leave that boilerplate.
+The scaffolds insert the repo root on `sys.path` for you; leave that boilerplate.
 
 ## Running the reference tests (optional)
 
@@ -33,7 +33,7 @@ pytest -v
 ## Practice wards vs. the real Vault
 
 Locally you face **practice** wards: deterministic, repeatable, and their flags
-are derivable — perfect for honing an attack. When you push, the grader runs
+are derivable, perfect for honing an attack. When you push, the grader runs
 your same exploit against the **real** wards, whose secret lives only in the
 grading vault, so hardcoding the practice flag gets you nowhere. Write a true
 attack and it breaks both.

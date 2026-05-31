@@ -121,6 +121,19 @@ machinery that makes the lab fair is crypto done *right*; reused keys, ECB,
 padding oracles, and now **hashing as a KDF**: applied symmetric crypto from
 both sides of the blade.
 
+## `[--[ THE SPELLBREAKER'S LIBRARY ]--]`
+
+Each ward is a real, named attack, and the honor code says *read everything*, so
+here's where to start. These four are a curated walk through the
+[Cryptopals challenges](https://cryptopals.com/); the lab is their Spellbreaker
+retelling.
+
+- **I · The Wisp**: ECB detection · [Block cipher modes](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) · [Cryptopals 1·8](https://cryptopals.com/sets/1/challenges/8)
+- **II · The Rune Golem**: ECB byte-at-a-time · [Cryptopals 2·12](https://cryptopals.com/sets/2/challenges/12)
+- **III · The Mirror Knight**: CBC bit-flipping · [Cryptopals 2·16](https://cryptopals.com/sets/2/challenges/16)
+- **IV · OMEGA WARD**: CBC padding oracle · [Padding oracle attack](https://en.wikipedia.org/wiki/Padding_oracle_attack) · [POODLE](https://en.wikipedia.org/wiki/POODLE) / [Lucky 13](https://en.wikipedia.org/wiki/Lucky_Thirteen_attack) · [Cryptopals 3·17](https://cryptopals.com/sets/3/challenges/17)
+- **Behind the curtain**: hashing as a KDF · [Key derivation function](https://en.wikipedia.org/wiki/Key_derivation_function)
+
 ## `[--[ HONOR CODE ]--]`
 
 Read everything: public tutorials, the oracle source, the docs, each other's

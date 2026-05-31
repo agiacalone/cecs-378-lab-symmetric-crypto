@@ -4,7 +4,7 @@ Two derivation regimes:
 
 * **Ward secrets / flags** are salted by a MAIN key. In CI (real mode) the
   main comes from the ``SPELLBREAKER_MAIN`` Actions secret, so the real
-  flag cannot be computed locally — the student's exploit must actually run
+  flag cannot be computed locally; the student's exploit must actually run
   the attack against the oracle. Locally (practice mode) the main falls back
   to a public constant, giving a deterministic practice flag to develop
   against.
