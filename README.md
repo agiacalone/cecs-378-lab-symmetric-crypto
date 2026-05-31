@@ -9,7 +9,7 @@
 
 **The Tower drinks the world dry.**
 
-For a century the Company has sunk its wells into the planet's veins and pumped
+For a century [the Company](https://finalfantasy.fandom.com/wiki/Shinra_Electric_Power_Company) has sunk its wells into the planet's veins and pumped
 the raw magic up into its Tower. Bottling [the lifeblood of the world](https://finalfantasy.fandom.com/wiki/Lifestream) as
 [**Materia**](https://finalfantasy.fandom.com/wiki/Materia), crystallized spellfire, it sells back to the very cities it has
 dimmed. What the Company guards most jealously isn't gold, and isn't territory.
@@ -42,10 +42,10 @@ shortcuts. The deeper you descend, the less they forgive.
 
 | Boss | Spell | The flaw | Difficulty |
 | --- | --- | --- | --- |
-| **I · The Wisp** | *Sense* | ECB determinism (detection) | trivial |
-| **II · The Rune Golem** | *Fire→Firaga* | ECB byte-at-a-time recovery | the real fight |
+| **I · The Wisp** | [*Sense*](https://finalfantasy.fandom.com/wiki/Sense) | ECB determinism (detection) | trivial |
+| **II · The Rune Golem** | [*Fire→Firaga*](https://finalfantasy.fandom.com/wiki/Fire_%28ability%29) | ECB byte-at-a-time recovery | the real fight |
 | **III · The Mirror Knight** | *Alter* | CBC malleability (bit-flipping) | hard |
-| **IV · OMEGA WARD** | *Ultima* | CBC padding oracle | Ω == top players only |
+| **IV · OMEGA WARD** | [*Ultima*](https://finalfantasy.fandom.com/wiki/Ultima_%28ability%29) | CBC padding oracle | Ω == top players only |
 
 - **The Wisp** barely counts as a guardian. Cast *Sense* and its repeating
   pattern flickers into the open.
@@ -99,7 +99,7 @@ Comment your code. Cite at least one source in your grimoire.
 
 Wards I–III + a thoughtful grimoire ≈ 90%. OMEGA WARD is the stretch.
 
-The **honor flag is a hard gate.** Run `python pledge.py`, affirm the SOLDIER's
+The **honor flag is a hard gate.** Run `python pledge.py`, affirm the [SOLDIER](https://finalfantasy.fandom.com/wiki/SOLDIER)'s
 Oath, paste the flag into your grimoire. Missing or wrong honor flag voids the
 autograded points.
 
