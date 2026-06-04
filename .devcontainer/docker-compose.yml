@@ -1,0 +1,24 @@
+# Devcontainer compose for the CECS 378 Spellbreaker lab.
+# Brings up two services: the student workspace and the PRACTICE oracle.
+#
+# PURITY: the oracle below runs in open TEST mode. It has NO grading env.
+# The absence of GRADING_KEY and GRADING_TOKEN is what selects TEST mode,
+# which uses a public test key and is therefore safe to run inside a
+# student-controlled Codespace. NEVER add GRADING_KEY or GRADING_TOKEN here.
+# Real grading happens only in GitHub Actions against the remote grading
+# oracle; the Codespace must never see the grading token.
+services:
+  workspace:
+    image: mcr.microsoft.com/devcontainers/python:3.12
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    depends_on:
+      - oracle
+
+  oracle:
+    image: ghcr.io/agiacalone/grading-oracle:latest
+    pull_policy: always
+    # No grading env on purpose: this is the open TEST-mode practice oracle.
+    # The workspace container reaches it at host "oracle" on port 8000, so the
+    # practice oracle URL inside the Codespace is http://oracle:8000.

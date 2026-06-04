@@ -72,6 +72,15 @@ for glory.
 
 ## `[--[ HOW TO BEGIN ]--]`
 
+**Fastest path (Codespaces):** accept the assignment, then on your repo click
+green **Code** -> **Codespaces** -> **Create codespace on main**. Wait ~2 to 4
+minutes for the first build. When the terminal attaches, the practice oracle is
+already running and `$SPELLBREAKER_ORACLE` is already set, so just cast `python
+student/exploit1.py`. See `docs/setup.md` for Codespaces quota hygiene and the
+local-Docker alternative.
+
+Working locally instead? Follow the steps below.
+
 1. Accept the GitHub Classroom assignment (you're reading its repo).
 2. Set up Python and start the practice oracle:
    ```sh

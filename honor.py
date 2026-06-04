@@ -9,6 +9,26 @@ import subprocess
 _HONOR_SALT = b"spellbreaker-honor-v1"
 
 
+def _normalize_remote_url(url: str) -> str:
+    """Reduce a git remote URL to the canonical owner/repo form.
+
+    GitHub Actions and Codespaces both set GITHUB_REPOSITORY to owner/repo,
+    but a student's local clone only has a remote URL. We map common forms
+    (scp-like, https, ssh) to owner/repo so the local flag matches CI.
+    """
+    s = url.strip()
+    if s.endswith(".git"):
+        s = s[: -len(".git")]
+    if "://" in s:
+        # drop the scheme, then drop the host up to the first slash
+        s = s.split("://", 1)[1]
+        s = s.split("/", 1)[1] if "/" in s else s
+    elif "@" in s and ":" in s:
+        # scp-like: git@host:owner/repo
+        s = s.split(":", 1)[1]
+    return s.strip("/")
+
+
 def repo_id() -> str:
     rid = os.environ.get("GITHUB_REPOSITORY")
     if rid:
@@ -19,7 +39,7 @@ def repo_id() -> str:
             stderr=subprocess.DEVNULL,
         ).decode().strip()
         if url:
-            return url
+            return _normalize_remote_url(url)
     except Exception:
         pass
     return "local/practice"

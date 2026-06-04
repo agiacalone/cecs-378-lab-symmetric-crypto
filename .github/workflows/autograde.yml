@@ -10,7 +10,7 @@ jobs:
       github.repository != 'agiacalone/cecs-378-lab-symmetric-crypto-dev' &&
       github.repository != 'agiacalone/cecs-378-lab-symmetric-crypto'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
       PYTHONPATH: ${{ github.workspace }}
       SPELLBREAKER_ORACLE: ${{ secrets.SPELLBREAKER_ORACLE_URL }}

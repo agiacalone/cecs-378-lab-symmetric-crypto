@@ -11,7 +11,9 @@ class Oracle:
         self.base = (base or os.environ.get("SPELLBREAKER_ORACLE", "http://localhost:8000")).rstrip("/")
         self.token = token or os.environ.get("SPELLBREAKER_ORACLE_TOKEN")
         self.repo = repo or os.environ.get("GITHUB_REPOSITORY", "local/practice")
-        self._session = requests  # overridable in tests with a FastAPI TestClient
+        # Default to a keep-alive Session so repeated requests reuse one TCP+TLS
+        # connection. Overridable in tests with a FastAPI TestClient (same .post API).
+        self._session = requests.Session()
 
     def _post(self, path: str, body: dict) -> dict:
         headers = {"X-Grading-Token": self.token} if self.token else {}

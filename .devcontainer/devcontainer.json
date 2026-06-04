@@ -1,0 +1,23 @@
+{
+  "name": "CECS 378 Spellbreaker Lab",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteEnv": {
+    "SPELLBREAKER_ORACLE": "http://oracle:8000"
+  },
+  "postCreateCommand": "pip install -r requirements.txt",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "workbench.startupEditor": "terminal"
+      }
+    }
+  }
+}

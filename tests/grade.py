@@ -12,10 +12,16 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Put the repo root on sys.path before importing repo modules, so this script
+# works when run as 'python tests/grade.py wardN' from the repo root (Python
+# otherwise puts the tests/ dir on sys.path[0], not the repo root). Mirrors the
+# bootstrap the exploit scaffolds already use.
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
 import honor
 from spellbreaker_oracle import Oracle
 
-ROOT = Path(__file__).resolve().parents[1]
 STUDENT = Path(os.environ.get("SPELLBREAKER_STUDENT_DIR", ROOT / "student"))
 
 
@@ -34,8 +40,13 @@ def main() -> int:
     if not exploit.exists():
         print(f"FAIL {ward}: {exploit} not found")
         return 1
-    proc = subprocess.run([sys.executable, str(exploit)], cwd=ROOT,
-                          capture_output=True, text=True, timeout=600)
+    timeout_s = 720
+    try:
+        proc = subprocess.run([sys.executable, str(exploit)], cwd=ROOT,
+                              capture_output=True, text=True, timeout=timeout_s)
+    except subprocess.TimeoutExpired:
+        print(f"FAIL {ward}: exploit exceeded {timeout_s}s (attack too slow)")
+        return 1
     lines = [ln for ln in proc.stdout.splitlines() if ln.strip()]
     if not lines:
         print(f"FAIL {ward}: exploit produced no output")
