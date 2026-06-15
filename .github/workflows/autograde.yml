@@ -40,3 +40,16 @@ jobs:
              && "${{ steps.ward3.outcome }}" != "success" && "${{ steps.ward4.outcome }}" != "success" ]]; then
             echo "::error::No wards passed (check exploits + honor flag)."; exit 1
           fi
+      - name: Aggregate result.json (recon contract)
+        if: always()
+        run: >
+          python tests/aggregate.py
+          "${{ steps.ward1.outcome }}" "${{ steps.ward2.outcome }}"
+          "${{ steps.ward3.outcome }}" "${{ steps.ward4.outcome }}"
+      - name: Publish grading artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: grading-result
+          path: grading/result.json
+          if-no-files-found: warn

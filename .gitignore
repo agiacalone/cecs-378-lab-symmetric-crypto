@@ -296,3 +296,6 @@ __pycache__/
 .pytest_cache/
 .venv/
 venv/
+
+# autograde recon contract (generated in CI, published as artifact)
+grading/
