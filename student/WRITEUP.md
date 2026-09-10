@@ -1,4 +1,14 @@
 ---
+# WHO THIS IS. Fill both in before you submit.
+#
+# This repository is PRIVATE — you and I are the only people who can read it.
+# I need these two lines to put your grade in Canvas against the right person:
+# GitHub knows you as a username, Canvas knows you as a student, and this is
+# the only place those two meet. A blank or wrong ID means a grade that lands
+# on nobody, and I have to come find you to fix it.
+name: "YOUR NAME AS IT APPEARS IN CANVAS"
+student_id: "YOUR 9-DIGIT CSULB ID"
+
 # The autograder reads only the honor flag below. Each ward is graded by
 # running your exploit and checking its proof with the oracle, so there is no
 # ward flag to paste. The lines below are for your own record: ward II and
