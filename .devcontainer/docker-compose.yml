@@ -17,7 +17,10 @@ services:
       - oracle
 
   oracle:
-    image: ghcr.io/agiacalone/grading-oracle:latest
+    # PINNED 2026-09-19. An unpinned :latest shipped an oracle whose routes moved to
+    # /{course}/{assignment}/{challenge}/{op}, which 404'd every ward call for an
+    # entire section. Repin deliberately after testing the client against a new image.
+    image: ghcr.io/agiacalone/grading-oracle@sha256:07f8087668741dd181665d20acf86dd0f15f8bfd3b21861b592344eb45d3747d
     pull_policy: always
     # No grading env on purpose: this is the open TEST-mode practice oracle.
     # The workspace container reaches it at host "oracle" on port 8000, so the
