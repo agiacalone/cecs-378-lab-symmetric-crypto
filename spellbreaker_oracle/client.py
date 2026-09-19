@@ -1,5 +1,6 @@
 """HTTP client the student exploit imports. Reads $SPELLBREAKER_ORACLE (URL),
-$SPELLBREAKER_ORACLE_TOKEN (grading only), and $GITHUB_REPOSITORY (repo id).
+$SPELLBREAKER_ORACLE_TOKEN (grading only), $SPELLBREAKER_COURSE (course id,
+defaults to "default"), and $GITHUB_REPOSITORY (repo id).
 The same code talks to a local test oracle and the remote grading oracle."""
 import os
 
@@ -7,17 +8,21 @@ import requests
 
 
 class Oracle:
-    def __init__(self, base: str | None = None, token: str | None = None, repo: str | None = None):
+    def __init__(self, base: str | None = None, token: str | None = None,
+                 repo: str | None = None, course: str | None = None):
         self.base = (base or os.environ.get("SPELLBREAKER_ORACLE", "http://localhost:8000")).rstrip("/")
         self.token = token or os.environ.get("SPELLBREAKER_ORACLE_TOKEN")
         self.repo = repo or os.environ.get("GITHUB_REPOSITORY", "local/practice")
+        # The oracle routes on /{course}/{assignment}/{challenge}/{op}; without the
+        # course segment every call 404s. "default" is the open practice course.
+        self.course = course or os.environ.get("SPELLBREAKER_COURSE", "default")
         # Default to a keep-alive Session so repeated requests reuse one TCP+TLS
         # connection. Overridable in tests with a FastAPI TestClient (same .post API).
         self._session = requests.Session()
 
     def _post(self, path: str, body: dict) -> dict:
         headers = {"X-Grading-Token": self.token} if self.token else {}
-        r = self._session.post(f"{self.base}{path}",
+        r = self._session.post(f"{self.base}/{self.course}{path}",
                                json={**body, "repo": self.repo}, headers=headers, timeout=30)
         r.raise_for_status()
         return r.json()
